@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +12,13 @@
 	<h3>My User Login</h3>
 
 	<form:form action="${pageContext.request.contextPath}/user-login-form" method = "POST">
+		<c:if test="${ param.error!=null }">
+			<i>Invalid User Name or Password!!! </i>
+		</c:if>
+		<c:if test="${ param.logout!=null }">
+			<i>Logout successfully </i>
+		</c:if>
+
 		<p>
 			User Name: <input type= "text" name = "username"/>
 		</p>
